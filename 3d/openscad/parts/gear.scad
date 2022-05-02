@@ -2,7 +2,7 @@
 
 
 module gear(m=8, h=10, t=5) {
-    x=str("parts/gear/m8/gear-modul8-",str(t),".svg");
+      x=str("parts/gear/m8/gear-modul8-",str(t),".svg");
     linear_extrude(height=h) import(str("parts/gear/m",str(m),"/gear-modul",str(m),"-t",str(t),".svg"), center=true);
 
 }
