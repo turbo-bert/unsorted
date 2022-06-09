@@ -1,0 +1,7 @@
+* DONE =clocale= compile errors <2022-06-09 Thu>
+
+For some reason, I had to copy 2 files as =root= under MacOS:
+
+#+begin_example
+cp /usr/local/lib/fpc/3.2.2/units/x86_64-darwin/rtl-extra/clocale.* /usr/local/lib/fpc/3.2.2/units/x86_64-darwin/rtl/
+#+end_example
