@@ -1,0 +1,11 @@
+#!/bin/bash
+
+F=$(gfind . -maxdepth 1 -iname "*.org" -print | head -1)
+
+if [[ ! -z "$F" ]]; then
+    FF="${F%%.org}.html~"
+    echo "OK"
+    emacs "$F" --batch -f org-html-export-to-html --kill
+    echo "DONE"
+    rm -f "$FF"
+fi

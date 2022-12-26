@@ -1,0 +1,11 @@
+* Create RSA Keys
+
+#+begin_example
+openssl genrsa 8192 >rsa8kkey.pem
+openssl genrsa 16384 >rsa16kkey.pem
+openssl req -x509 -new -nodes -key rsa16kkey.pem -sha512 -days 1000 -out ca.pem
+openssl genrsa 4096 >client1.key
+openssl req -new -key client1.key -out client1.csr
+openssl x509 -req -in client1.csr -CA ca.pem -CAkey rsa16kkey.pem -CAcreateserial -out client1.pem -days 100 -sha512
+openssl pkcs12 -export -out client1.pfx -in client1.pem -inkey client1.key
+#+end_example

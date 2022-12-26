@@ -1,0 +1,11 @@
+#!/bin/bash
+
+F=$(gfind . -maxdepth 1 -iname "*.org" -print | head -1)
+
+if [[ ! -z "$F" ]]; then
+    FF="${F%%.org}.txt~"
+    echo "OK"
+    emacs "$F" --batch -f org-ascii-export-to-ascii --kill
+    echo "DONE"
+    rm -f "$FF"
+fi
