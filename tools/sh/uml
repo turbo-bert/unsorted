@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+if [[ -z $1 ]]; then
+    $0 *.uml
+    exit 0
+fi
+
+#for p in ttxt tpng tsvg; do
+for f in "$@"; do
+    ff=${f%%.uml}
+    set -x
+    (
+        echo "@startuml"
+        echo "skinparam monochrome true"
+        echo "skinparam dpi 150"
+        cat "$f"
+        echo "@enduml"
+    ) | plantuml -progress -tpng -p >$ff.png
+#    (
+#        echo "@startuml"
+#        echo "skinparam monochrome true"
+#        echo "skinparam dpi 150"
+#        cat "$f"
+#        echo "@enduml"
+#    ) | plantuml -progress -tsvg -p >$ff.svg
+done
